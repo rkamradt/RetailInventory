@@ -1,0 +1,44 @@
+{
+  "name": "RetailInventory",
+  "version": "0.0.0",
+  "description": "A basic retail inventory system",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node -harmony server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkamradt/RetailInventory.git"
+  },
+  "author": "Randal Kamradt Sr",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/rkamradt/RetailInventory/issues"
+  },
+  "homepage": "https://github.com/rkamradt/RetailInventory",
+  "dependencies": {
+    "passport": "^0.2.0",
+    "express": "^4.2.0",
+    "errorhandler": "^1.0.1",
+    "method-override": "^1.0.0",
+    "body-parser": "^1.2.0",
+    "cookie-parser": "^1.1.0",
+    "morgan": "^1.0.1",
+    "express-session": "^1.1.0",
+    "passport-local": "^1.0.0",
+    "connect-flash": "^0.1.1",
+    "mongoose": "^3.8.9"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "should": "latest",
+    "jshint": "^2.5.1",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.2.3",
+    "grunt-nodemon": "~0.1.2",
+    "grunt-simple-mocha": "~0.4.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt": "^0.4.5"
+  }
+}
