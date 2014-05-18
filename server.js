@@ -15,9 +15,9 @@ var express = require('express'),
     LocalStrategy = require('passport-local'),
     flash = require('connect-flash'),
     mongoose = require('mongoose'),
-    User = require('./user'),
-    authroutes = require('./authroutes'),
-    approutes = require('./approutes'),
+    User = require('./app/models/user'),
+    authroutes = require('./app/routes/authroutes'),
+    approutes = require('./app/routes/approutes'),
     port = process.env.PORT || 5000,
     realm = 'http://localhost'; 
 
