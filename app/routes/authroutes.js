@@ -35,8 +35,16 @@ module.exports = function(express, passport){
     });
     
     router.get('/logout', function(req, res){
-        req.logout();
+        res.logout();
         res.send("in logout get");
+//        res.redirect('/');
+        });
+    router.post('/signup', function(req, res){
+        res.send("in signup post");
+//        res.redirect('/');
+        });
+    router.get('/signup', function(req, res){
+        res.send("in signup get");
 //        res.redirect('/');
         });
     return router;

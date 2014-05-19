@@ -22,8 +22,8 @@ var express = require('express'),
     realm = 'http://localhost'; 
 
 passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username, password: password }, function (err, user) {
+  function(email, password, done) {
+    User.findOne({ email: email, password: password }, function (err, user) {
       done(err, user);
     });
   }
@@ -55,13 +55,14 @@ app.use('/', express.static(path.join(__dirname, 'static')));
 app.use(errorHandler());
 
 mongoose.connect('mongodb://localhost/RetailInventory');
-mongoose.connection.on('open', function() {
+var db = mongoose.connection.on('open', function() {
     console.log("Connected to Mongoose...");
 });
-
-      
-http.createServer(app).listen(app.get('port'), function() {
-  console.log('Server up: http://localhost:' + app.get('port'));
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {      
+    http.createServer(app).listen(app.get('port'), function() {
+      console.log('Server up: http://localhost:' + app.get('port'));
+    });
 });
     
 function ensureAuthenticated(req, res, next) {
