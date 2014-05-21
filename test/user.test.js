@@ -1,3 +1,5 @@
+/*global describe, it, before, beforeEach, after, afterEach */
+
 "use strict";
 
 var User = require('../app/models/user'),
@@ -9,6 +11,7 @@ var db;
 
 describe('User', function(){
   before(function(done){
+    mongoose.connection.removeAllListeners('open');
     mongoose.connect('mongodb://localhost/RetailInventoryTest');
     db = mongoose.connection.on('open', done);
   });

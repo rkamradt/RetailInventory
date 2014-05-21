@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         jshint: { options: { node: true, strict: true, indent: 4 }, 
-                  target: ['*.js','app/models/*.js','app/routes/*.js']
+                  target: ['*.js','app/models/*.js','app/routes/*.js','test/*.js']
         },
         nodemon: {
             dev: {
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             },
 
             server: {
-                src: ['test/*.js']
+                src: ['test/*.test.js']
             }
         }
     });
