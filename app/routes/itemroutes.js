@@ -14,15 +14,15 @@ module.exports = function(express, passport){
         next();
     });
     router.post('/:id', function(req, res, next) {
-        var id = req.params[id];
+        var id = req.params.id;
         var newItem = JSON.parse(req.body);
         var item = Item.findById(id, function(err, item) {
             if(err) {
-                res.send(404);
+                res.json(500, { error: 'could not update item ' + id + ': ' + err });
             } else {
                 Item.save(newItem, function(err, item) {
                     if(err) {
-                        res.json(500, { error: 'could not update item ' + id });
+                        res.json(500, { error: 'could not update item ' + id + ': ' + err});
                     } else {
                         res.json(200, item);
                     }
@@ -31,10 +31,10 @@ module.exports = function(express, passport){
         });
     });
     router.get('/:id', function(req, res){
-        var id = req.params[id];
+        var id = req.params.id;
         Item.findById(id, function(err, item) {
             if(err) {
-                res.json(404, { error: 'could not create item ' + id });
+                res.json(404, { error: 'could not create item ' + id + ': ' + err });
             } else {
                 res.json(200, item);
             }
@@ -43,28 +43,28 @@ module.exports = function(express, passport){
     router.get('/', function(req, res){
         Item.find(null,null,null, function(err, items) {
             if(err) {
-                res.json(500, { error: 'could not create any items'});
+                res.json(500, { error: 'could not create any items' + ': ' + err});
             } else {
                 res.json(200, items);
             }
         });
     });
     router.put('/', function(req, res){
-        var number = req.params[number];
-        var name = req.params[name];
+        var number = req.params.number;
+        var name = req.params.name;
         Item.createNew(number,name,function(err, item) {
             if(err) {
-                res.json(500, { error: 'could not create item ' + name });
+                res.json(500, { error: 'could not create item ' + name + ': ' + err });
             } else {
                 res.json(200, item);
             }
         });
     });
     router.delete('/:id', function(req, res){
-        var id = req.params[id];
+        var id = req.params.id;
         Item.remove(id, function(err) {
             if(err) {
-                res.send(404);
+                res.json(404, { error: 'could not delete item ' + id + ': ' + err });
             } else {
                 res.send(200);
             }
